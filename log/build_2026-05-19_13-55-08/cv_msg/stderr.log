@@ -1,0 +1,20 @@
+[33mCMake Warning (dev) at CMakeLists.txt:17:
+  Syntax Warning in cmake code at column 24
+
+  Argument not separated from preceding token by whitespace.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at CMakeLists.txt:18:
+  Syntax Warning in cmake code at column 24
+
+  Argument not separated from preceding token by whitespace.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):
+  rosidl_generate_interfaces() the passed file ',' doesn't exist relative to
+  the CMAKE_CURRENT_SOURCE_DIR
+  '/home/a/Desktop/yhan/Sources/ros2_ws/src/cv_msg'
+Call Stack (most recent call first):
+  CMakeLists.txt:16 (rosidl_generate_interfaces)
+
+[0m
