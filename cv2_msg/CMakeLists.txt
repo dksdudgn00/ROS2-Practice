@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ros_srv_c)
+project(cv2_msg)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,23 +7,14 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(cv_msg REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
-# 서버 실행 파일 생성
-add_executable(server src/server.cpp)
-ament_target_dependencies(server rclcpp cv_msg)
-
-# 클라이언트 실행 파일 생성
-add_executable(client src/client.cpp)
-ament_target_dependencies(client rclcpp cv_msg)
-
-install(TARGETS
-  server
-  client
-  DESTINATION lib/${PROJECT_NAME}
-  )
-
+rosidl_generate_interfaces(${PROJECT_NAME}
+    "msg/MsgCenter.msg"
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

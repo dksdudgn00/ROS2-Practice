@@ -6,7 +6,7 @@
 using SrvAddint = cv_msg::srv::SrvAddint;
 
 void add(const std::shared_ptr<SrvAddint::Request> request,
-        const std::shared_ptr<SrvAddint::Response response)
+        const std::shared_ptr<SrvAddint::Response> response)
 {
     response->sum = request->a + request->b;
 

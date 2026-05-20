@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ros_srv_c)
+project(ros_cv_center_c)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -8,22 +8,34 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(cv_msg REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(cv2_msg REQUIRED)
 
-# 서버 실행 파일 생성
-add_executable(server src/server.cpp)
-ament_target_dependencies(server rclcpp cv_msg)
+add_executable(center_pub src/center_pub.cpp)
+ament_target_dependencies(center_pub
+  rclcpp
+  sensor_msgs
+  cv_bridge
+  OpenCV
+  cv2_msg)
 
-# 클라이언트 실행 파일 생성
-add_executable(client src/client.cpp)
-ament_target_dependencies(client rclcpp cv_msg)
+add_executable(center_sub src/center_sub.cpp)
+ament_target_dependencies(center_sub
+  rclcpp
+  sensor_msgs
+  cv_bridge
+  OpenCV
+  cv2_msg
+)
 
 install(TARGETS
-  server
-  client
+  center_pub
+  center_sub
   DESTINATION lib/${PROJECT_NAME}
-  )
 
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
